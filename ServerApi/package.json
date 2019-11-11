@@ -1,0 +1,21 @@
+{
+  "name": "serverapi",
+  "version": "1.0.0",
+  "description": "REST API para el proyecto 3",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Resful",
+    "Api",
+    "graph",
+    "Node",
+    "Edge"
+  ],
+  "author": "Dennis, Roy, Alvaro, Mario",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
