@@ -18,15 +18,13 @@ router.get('/:EdgeId', (req, res, next)=> {
         EdgeId: req.params.EdgeId
     })
 })
-router.delete('/:EdgeId', (req, res, next)=> {
+router.delete('/:EdgeId', (req, res, next) => {
     res.status(200).json()({
-        message:'Arista Borrada',
+        message: 'Arista Borrada',
         EdgeId: req.params.EdgeId
-    })
-})
-
-
-
+    });
+});
+module.exports = router;
 
 
 module.exports = router;
