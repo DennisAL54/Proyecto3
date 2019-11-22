@@ -24,7 +24,5 @@ router.delete('/:EdgeId', (req, res, next) => {
         EdgeId: req.params.EdgeId
     });
 });
-module.exports = router;
-
 
 module.exports = router;

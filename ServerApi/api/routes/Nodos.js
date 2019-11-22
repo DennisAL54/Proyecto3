@@ -36,5 +36,4 @@ router.delete('/:NodeID', (req, res, next) => {
 		message: 'Nodo Borrado'
 	})
 })
-
 module.exports = router;
