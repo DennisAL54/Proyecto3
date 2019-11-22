@@ -4,9 +4,6 @@ const nodoRoutes = require('./api/routes/Nodos');
 const aristaRoutes = require('./api/routes/Aristas');
 const grafoRoutes = require('./api/routes/Grafo');
 
-app.use(bodyParser.urlencoded({extended: false}));
-app.use(bodyParser.json());
-
 app.use('/Nodos', nodoRoutes);
 app.use('/Aristas', aristaRoutes);
 app.use('/Grafo', grafoRoutes);
