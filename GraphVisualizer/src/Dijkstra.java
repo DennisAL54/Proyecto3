@@ -1,11 +1,15 @@
+/**
+ * Paquete e importaciones.
+ */
+package Modelos;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Stack;
 
 
 /**
- * Dijkstra algorithm implementations with adjacency list
- * @author pablo
+ * Algoritmo dijkstra con lista de adyacencia
+ * @author Mario
  */
 public class Dijkstra {
 
@@ -23,21 +27,22 @@ public class Dijkstra {
 	}
 	
 	/**
-	 * Function to get minimum vertex no visited
+         * Funcion para obtener el minimo vertice no visitado
 	 */
 	private Node findMinimunVertex() {
 		Node minimunVertex = unvisitedVertices.iterator().next();
 		for (Node key : shorestPath.keySet()) {
 			if (unvisitedVertices.contains(key) && shorestPath.get(key).getWeight() < shorestPath.get(minimunVertex).getWeight()) {
 				minimunVertex = key;
-			} // end if
-		} // end for
+			} // fin if
+		} // fin for
 		return minimunVertex;
 	}
 	
 	/**
-	 * @param pGraph 
-	 * @param pOrigin
+         * Metodo para encontrar el camino mas corto de un nodo a otro.
+	 * @param pGraph nodo al que se decea llegar.
+	 * @param pOrigin nodo de origen.
 	 */ 
 	public void findMinimunPath(Graph pGraph, Node pOrigin) {
 		origin = pOrigin;
@@ -62,16 +67,16 @@ public class Dijkstra {
 					if (shorestPath.get(vertex).getWeight() > weight) {
 						shorestPath.get(vertex).setWeight(weight);
 						shorestPath.get(vertex).setPreviousVertex(minimunVertex);
-					} // end if
-				} // end if
-			} // end for
-		} // end while
+					} // fin if
+				} // fin if
+			} // fin for
+		} // fin while
 	}
 	
 	/**
-	 * Function to get the list of path vertex
-	 * @param pDestination the end vertex
-         * @return 
+	 * Función para obtener la lista de rutas de un vertice.
+	 * @param pDestination vertice de destino
+         * @return ruta.
 	 */
 	public ArrayList<Node> getPathTo(Node pDestination) {
 		Stack<Node> findPath = new Stack();
@@ -80,6 +85,9 @@ public class Dijkstra {
 		while (findPath.peek() != origin) {
 			findPath.push(shorestPath.get(findPath.peek()).getPreviousVertex());
 		}
+                /**
+                 * si la lista no está vacía.
+                 */
 		while(!findPath.isEmpty()) {
                     path.add(findPath.pop());
 		}
@@ -89,10 +97,8 @@ public class Dijkstra {
 }
 
 /**
- * Structure to contains the path 
- * @author pablo
- *
- * @param 
+ * Estructura para guardar la ruta
+ * @author Mario
  */
 class D {
 	private Node previousVertex;
@@ -107,29 +113,31 @@ class D {
 	}
 
 	/**
-	 * @return the previousVertex
+	 * @return vertice anterior
 	 */
 	public Node getPreviousVertex() {
 		return previousVertex;
 	}
 
 	/**
-	 * @param pPreviousVertex the previousVertex to set
+	 * @param pPreviousVertex el vertice anterior a establecer
 	 */
 	public void setPreviousVertex(Node pPreviousVertex) {
 		this.previousVertex = pPreviousVertex;
 	}
 
 	/**
-	 * @return the distanceFromVertex
+         * Metodo para obtener el peso.
+	 * @return peso
 	 */
 	public int getWeight() {
 		return weight;
 	}
 
 	/**
-	 * @param pDistanceFromVertex the distanceFromVertex to set
-	 */
+         * Metodo para establecer el peso.
+         * @param pWeight 
+         */
 	public void setWeight(int pWeight) {
 		this.weight = pWeight;
 	}

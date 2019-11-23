@@ -1,5 +1,12 @@
+/**
+ * paquete e importaciones.
+ */
+package Modelos;
 import java.util.*;
-
+/**
+ * Clase para grafos individuales
+ * @author Mario
+ */
 public class Graph{
     private final ArrayList<Node> nodes;
     private int idNodo = 1;

@@ -1,15 +1,19 @@
+/*
+ * Paquete
+ */
+package Modelos;
 
 import java.util.ArrayList;
 
 
 /**
- *
+ * Clase principal del grafo.
  * @author alvgo
  */
 public class GraphVisualizer {
 
     /**
-     * @param args the command line arguments
+     * @param args linea de comandos.
      */
     public static void main(String[] args) {
         
