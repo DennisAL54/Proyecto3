@@ -1,12 +1,7 @@
-/**
- * paquete e importaciones.
- */
-package Modelos;
+
+
 import java.util.*;
-/**
- * Clase para grafos individuales
- * @author Mario
- */
+
 public class Graph{
     private final ArrayList<Node> nodes;
     private int idNodo = 1;
@@ -142,7 +137,7 @@ public class Graph{
             this.getAristas().remove(idArista-1);
             for (Node node : nodes) {
                 for (Arista ari : node.getAristas()) {
-                    if(ari.haveThisID(idArista))
+                    if(ari.idArista == idArista)
                         node.getAristas().remove(ari);
                 }
             }

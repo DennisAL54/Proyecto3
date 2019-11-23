@@ -1,28 +1,21 @@
-/*
- * Paquete e importaciones
- */
-package Modelos;
+
 import java.util.ArrayList;
 
-/**
- * Clase para la creación de grafos.
- * @author alvgo
- */
 public class Graphs {
     
     private final ArrayList<Graph> grafos = new ArrayList<>();
     private int idGrafo = 1;
-    /**
-     * Metodo para la creacion de grafos
-     */
+    
+    //Metodo para crear un grafo y ser agregado a la lista.
     public void CrearGrafo(){
         Graph newGraph = new Graph(idGrafo++);
         grafos.add(newGraph);
     }
+    
     /**
-     * Metodo para obtener un grafo por medio de su id.
-     * @param idGrafo idetificacion del grafo.
-     * @return retorna el grafo encontrado
+     * Metodo para obtener un grafo especifico.
+     * @param idGrafo ID del grafo a obtener.
+     * @return Grafo requerido.
      */
     public Graph getGrafo(int idGrafo){
         for (Graph grafo : grafos) {
@@ -31,24 +24,27 @@ public class Graphs {
         }
         return new Graph(0);
     }
+    
     /**
-     * Metodo que obtiene la lista de grafos creados.
-     * @return lista de gorafos creados.
+     * Metodo para obtener todos los grafos guardados en memoria.
+     * @return Lista de grafos creados.
      */
     public ArrayList<Graph> getGrafos(){
         if (grafos.isEmpty())
             return null;
         return grafos;
     }
+    
     /**
-     * Metodo para borrar todo los grafos
+     * Metodo para borrar todos los grafos creados.
      */
     public void borrarGrafos(){
         grafos.clear();
     }
+    
     /**
-     * Metodo para borrar grafo identificado por id.
-     * @param idGrafo id del grafo.
+     * Metodo para borrar un grafo especifico.
+     * @param idGrafo ID del grafo a borrar.
      */
     public void borrarGrafo(int idGrafo){
         grafos.remove(idGrafo-1);

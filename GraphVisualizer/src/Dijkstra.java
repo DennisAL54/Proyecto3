@@ -1,48 +1,40 @@
-/**
- * Paquete e importaciones.
- */
-package Modelos;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Stack;
 
-
-/**
- * Algoritmo dijkstra con lista de adyacencia
- * @author Mario
- */
 public class Dijkstra {
 
-	private ArrayList<Node> unvisitedVertices;
-	private HashMap<Node, D> shorestPath;
+	private final ArrayList<Node> unvisitedVertices;
+	private final HashMap<Node, D> shorestPath;
 	private Node origin;
 	
 	/**
-	 * Constructor
+	 * Constructor de la clase.
 	 */ 
 	public Dijkstra() {
-            unvisitedVertices = new ArrayList<Node>();
-            shorestPath = new HashMap<Node,D>();
+            unvisitedVertices = new ArrayList<>();
+            shorestPath = new HashMap<>();
             origin = null;
 	}
 	
 	/**
-         * Funcion para obtener el minimo vertice no visitado
+	 * Funcion para obtener el vertice minimo no visitado.
 	 */
 	private Node findMinimunVertex() {
 		Node minimunVertex = unvisitedVertices.iterator().next();
 		for (Node key : shorestPath.keySet()) {
 			if (unvisitedVertices.contains(key) && shorestPath.get(key).getWeight() < shorestPath.get(minimunVertex).getWeight()) {
 				minimunVertex = key;
-			} // fin if
-		} // fin for
+			}
+		}
 		return minimunVertex;
 	}
 	
 	/**
-         * Metodo para encontrar el camino mas corto de un nodo a otro.
-	 * @param pGraph nodo al que se decea llegar.
-	 * @param pOrigin nodo de origen.
+         * Metodo para encontrar la ruta mas corta de cada nodo, (D0).
+	 * @param pGraph Grafo que sera recorrido.
+	 * @param pOrigin Nodo al cual se enontrara la ruta mas corta.
 	 */ 
 	public void findMinimunPath(Graph pGraph, Node pOrigin) {
 		origin = pOrigin;
@@ -67,16 +59,16 @@ public class Dijkstra {
 					if (shorestPath.get(vertex).getWeight() > weight) {
 						shorestPath.get(vertex).setWeight(weight);
 						shorestPath.get(vertex).setPreviousVertex(minimunVertex);
-					} // fin if
-				} // fin if
-			} // fin for
-		} // fin while
+					}
+				}
+			}
+		}
 	}
 	
 	/**
-	 * Función para obtener la lista de rutas de un vertice.
-	 * @param pDestination vertice de destino
-         * @return ruta.
+	 * Metodo para obtener una lista de nodos formando la ruta mas corta hacia un nodo de destino.
+	 * @param pDestination Nodo de destino.
+         * @return Lista de nodos formanod la ruta.
 	 */
 	public ArrayList<Node> getPathTo(Node pDestination) {
 		Stack<Node> findPath = new Stack();
@@ -85,9 +77,6 @@ public class Dijkstra {
 		while (findPath.peek() != origin) {
 			findPath.push(shorestPath.get(findPath.peek()).getPreviousVertex());
 		}
-                /**
-                 * si la lista no está vacía.
-                 */
 		while(!findPath.isEmpty()) {
                     path.add(findPath.pop());
 		}
@@ -96,48 +85,32 @@ public class Dijkstra {
 	
 }
 
-/**
- * Estructura para guardar la ruta
- * @author Mario
- */
+
 class D {
 	private Node previousVertex;
 	private int weight;
 	
 	/**
-	 * Constructor
+	 * Constructor de la clase.
 	 */
 	public D(int pWeight) {
 		previousVertex = null;
 		weight = pWeight;
 	}
-
-	/**
-	 * @return vertice anterior
-	 */
+        
+        //Getters y Setters.
 	public Node getPreviousVertex() {
 		return previousVertex;
 	}
-
-	/**
-	 * @param pPreviousVertex el vertice anterior a establecer
-	 */
+        
 	public void setPreviousVertex(Node pPreviousVertex) {
 		this.previousVertex = pPreviousVertex;
 	}
-
-	/**
-         * Metodo para obtener el peso.
-	 * @return peso
-	 */
+        
 	public int getWeight() {
 		return weight;
 	}
-
-	/**
-         * Metodo para establecer el peso.
-         * @param pWeight 
-         */
+        
 	public void setWeight(int pWeight) {
 		this.weight = pWeight;
 	}

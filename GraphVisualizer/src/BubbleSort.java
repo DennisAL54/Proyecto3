@@ -1,7 +1,9 @@
+
 /*
- * Paquete e importaciones
- */
-package Modelos;
+La aplicación debe permitir visualizar el grado entrante y
+saliente de cada nodo tanto en la visualización como en una tabla rankeada
+de menor a mayor (promediar grado entrante y saliente).
+*/
 
 
 /**
@@ -12,20 +14,17 @@ public class BubbleSort {
     /**
      * Metodo que ordena el array de los promedios de aristas de entrada o salida.
      * @param array array con los valores promedio de aristas (entradas/salidas)
-     * @param Orden manera o secuencia en la que se debe ordenar el array.
+     * @param Orden
      * @return array ordenado
      */
     public int[] bubble_srt(int array[], int Orden) {
-        int n = array.length; // longitud del array
-        int k; // indice para la comparacion.
+        int n = array.length;
+        int k;
         for (int m = 0; m < n; m++) {
             for (int i = 0; i < n - 1; i++) {
                 k = i + 1;
                 switch(Orden){
-                    /**
-                     * Caso 1: Si el orden del array es de la forma descendente. 
-                     */
-                    case 1: default: 
+                    case 1: default:
                         if (array[i] < array[k]) {
                             int temp;
                             temp = array[i];
@@ -33,9 +32,6 @@ public class BubbleSort {
                             array[k] = temp;
                         }
                         break;
-                    /**
-                     * Caso 2: Si el orden del array es de forma ascendente.
-                     */
                     case 0:
                         if (array[i] > array[k]) {
                             int temp;
