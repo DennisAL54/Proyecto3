@@ -1,6 +1,7 @@
-// Initialise sigma:
+//Funcion que invoca al grafo
 function grafo(){
-var s = new sigma(
+var gr = new sigma(
+  //Configuracion del grafo
     {
       renderer: {
         container: document.getElementById('sigma-container'),
@@ -10,27 +11,27 @@ var s = new sigma(
        minEdgeSize: 0.1,
        maxEdgeSize: 2,
        minNodeSize: 1,
-       maxNodeSize: 8,
+       maxNodeSize: 30,
       }
     }
   );
   
-  // Create a graph object
+  //Se define el objeto graph el cual consiste un una lista de nodos y
+  //otra de aristas
   var graph = {
     nodes: [
-      { id: "n0", label: "A node", x: 0, y: 0, size: 3, color: '#008cc2' },
-      { id: "n1", label: "Another node", x: 3, y: 1, size: 2, color: '#008cc2' },
-      { id: "n2", label: "And a last one", x: 1, y: 3, size: 1, color: '#E57821' }
+      { id: "nd0", label: "Lex Luthor", x: 0, y: 0, size: 30, color: 'green' },
+      { id: "nd1", label: "Han Solo", x: 3, y: 1, size: 30, color: 'grey' },
+      { id: "nd2", label: "Thanos", x: 1, y: 3, size: 30, color: 'purple' }
     ],
     edges: [
-      { id: "e0", source: "n0", target: "n1", color: '#282c34', type:'line', size:0.5 },
-      { id: "e1", source: "n1", target: "n2", color: '#282c34', type:'curve', size:1},
-      { id: "e2", source: "n2", target: "n0", color: '#FF0000', type:'line', size:2}
+      { id: "ed0", source: "nd0", target: "nd1", color: 'black', type:'arrow', size:2, label:"4 min"},
+      { id: "ed1", source: "nd1", target: "nd0", color: 'black', type:'arrow', size:2, label:"11 min"},
+      { id: "ed2", source: "nd2", target: "nd0", color: 'black', type:'arrow', size:2, label:"34 min"}
     ]
   }
   
-  // Load the graph in sigma
-  s.graph.read(graph);
-  // Ask sigma to draw it
-  s.refresh();
+  //Fuciones encargadas de dibujar el grafo
+  gr.graph.read(graph);
+  gr.refresh();
 }

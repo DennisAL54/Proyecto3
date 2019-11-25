@@ -1,25 +1,35 @@
 <html>
   <head>
-    <title>SigmaJS example</title>
+    <title>Visualizador de Grafos OIJ</title>
     <script src="./build/sigma.min.js"></script>
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
+    <!--Titulo-->
+    <h1>Visualizador de Grafos OIJ
+    </h1>
+    <!--Carga el contenedor del grafo-->
     <div id='sigma-container'></div>
+    <!--Define la fuente del codigo-->
     <script src="grafo.js">  </script>
-    <script src=""></script>
 
+
+    <!--Botones y entradas de la pagina-->
+    <br>  
     <button onclick="grafo()">Agregar grafo</button>
 
     <div>
       <button>Agregar nodo</button> <label>ID Nodo:</label><input type="text">
+    </div>
+
     <div>
       <button>Eliminar nodo</button><label>ID Nodo:</label><input type="text"> 
     </div>
+
     <div>
       <button>Actualizar nodos</button>
     </div>
-    
+
     <div>
     <button>Agregar arista</button> 
     <label>ID arista: </label><input type="text" name="" id="idA">
@@ -30,19 +40,7 @@
     <div>
       <button>Eliminar arista</button><label>ID arista:</label><input type="text">
     </div>
-
-  
-     
-
-
-
-
-
-
-
-
     
-
-
+    <button>Actualizar arista</button>
   </body>
 </html>
