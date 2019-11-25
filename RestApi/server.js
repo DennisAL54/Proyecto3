@@ -8,7 +8,6 @@ app.use(express.json())// lo aplicamos a un app
 app.post('/graphs', (req,res)=> { // post request para crear un grafo
     var net = require('net')
     var client = net.connect(1010, 'localhost');
-    //client.write("Postear grafo")
     client.end();
     res.send('Grafo Posteado')
     res.status(500).send()
@@ -18,7 +17,6 @@ app.post('/graphs', (req,res)=> { // post request para crear un grafo
 app.get('/graphs', (req, res)=> {//get request para obtener un grafo
     var net = require('net')
     var client = net.connect(1000, 'localhost');
-    //client.write("obtener grafo");
     client.end();
     res.send('Grafo Obtenido')
     res.status(200).send()
@@ -35,6 +33,9 @@ app.delete('/graphs', (req,res)=> {// delete request para borrar un grafo
 })
 
 app.get('/graphs/:graphid/degree',(req,res)=> {//get request para obtener el grado del grafo
+    var net = require('net')
+    var client = net.connect(1002, 'localhost');
+    client.end();
     const id = req.params.graphid;
     res.send("Grado del grafo con id: " + id)
     res.status(404).send()
