@@ -6,11 +6,20 @@ const port = 3000 // asignamos un puerto
 app.use(express.json())// lo aplicamos a un app
 
 app.post('/graphs', (req,res)=> { // post request para crear un grafo
+    var net = require('net')
+    var client = net.connect(1000, 'localhost');
+    //client.write("post");
+    client.end();
     res.send('Grafo Posteado')
     res.status(500).send()
+
 })
 
 app.get('/graphs', (req, res)=> {//get request para obtener un grafo
+    var net = require('net')
+    var client = net.connect(1010, 'localhost');
+    //client.write("obtener grafo");
+    client.end();
     res.send('Grafo Obtenido')
     res.status(200).send()
 
@@ -35,27 +44,27 @@ app.get('/graphs/:graphid/dijkstra',(req,res)=> {//get request para obtener el c
     res.status(500).send()
 })
 
-app.get('/graphs/:graphid',(req,res)=> {//get request para acceder a un grafo específico
+app.get('/graphs/:graphid',(req,res)=> { //get request para acceder a un grafo específico
     const id = req.params.graphid;
     res.send("Accedió al grafo con id: " + id)
     res.status(404).send()
 })
-app.delete('/graphs/:graphid', (req,res)=> {// delete request para borrar un grafo específico
+app.delete('/graphs/:graphid', (req,res)=> { //delete request para borrar un grafo específico
     const id = req.params.graphid
     res.send('El grafo con el id ' + id + ' fue borrado')
     res.status(404).send()
 })
-app.post('/graphs/:graphid/nodes', (req,res)=> {// post request para crear un nodo
+app.post('/graphs/:graphid/nodes', (req,res)=> { //post request para crear un nodo
     const id = req.params.graphid
     res.send('Nodo creado en el grafo id: ' + id)
     res.status(500).send()
 })
-app.get('/graphs/:graphid/nodes',(req,res)=> {//get request para retornar los nodos de un grafo
+app.get('/graphs/:graphid/nodes',(req,res)=> { //get request para retornar los nodos de un grafo
     const id = req.params.graphid;
     res.send("Nodos del grafo con id: " + id)
     res.status(500).send()
 })
-app.put('/graphs/:graphid/nodes/:nodeid',(req,res)=> {//put request para actualizar un nodo 
+app.put('/graphs/:graphid/nodes/:nodeid',(req,res)=> { //put request para actualizar un nodo 
     const id = req.params.graphid;
     const id2 = req.params.nodeid;
     res.send('Nodo ' + id2 +  ' del grafo con id: ' + id + ' actualizado')
