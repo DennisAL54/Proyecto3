@@ -11,24 +11,51 @@ public class Main {
      * @param args
      */
     public static void main(String[] args){
+        ServerSocket server;
+        Socket client;
+        /**
+         * Metodo main que une el rest api con el grafo mediante sockets
+         */
         Graphs g = new Graphs();
-        g.CrearGrafo();
-        g.getGrafos();
-
-        /*ServerSocket server1;
-        Socket client1;
-        InputStream input1;
-        Graphs g = new Graphs();
+        /**
+         * Cada try/catch se conecta con el rest api mediante sockets y permite que este le envie ordenes a java
+         */
         try {
-            server1 = new ServerSocket(1010);
-            client1 = server1.accept();
+            server = new ServerSocket(1010);
+            client = server.accept();
             g.CrearGrafo();
-            System.out.println("A-ok");
-            client1.close();
-            server1.close();
+            System.out.println("Grafo Creado");
+
+            client.close();
+            server.close();
         }
         catch (Exception e) {
             e.printStackTrace();
-        }*/
+        }
+        try {
+            server = new ServerSocket(1000);
+            client = server.accept();
+            g.getGrafos();
+            System.out.println("Grafo Obtenido");
+
+            client.close();
+            server.close();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            server = new ServerSocket(1001);
+            client = server.accept();
+            g.getGrafos();
+            System.out.println("Grafos Borrados");
+
+            client.close();
+            server.close();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 }

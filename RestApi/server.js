@@ -7,8 +7,8 @@ app.use(express.json())// lo aplicamos a un app
 
 app.post('/graphs', (req,res)=> { // post request para crear un grafo
     var net = require('net')
-    var client = net.connect(1000, 'localhost');
-    //client.write("post");
+    var client = net.connect(1010, 'localhost');
+    //client.write("Postear grafo")
     client.end();
     res.send('Grafo Posteado')
     res.status(500).send()
@@ -17,7 +17,7 @@ app.post('/graphs', (req,res)=> { // post request para crear un grafo
 
 app.get('/graphs', (req, res)=> {//get request para obtener un grafo
     var net = require('net')
-    var client = net.connect(1010, 'localhost');
+    var client = net.connect(1000, 'localhost');
     //client.write("obtener grafo");
     client.end();
     res.send('Grafo Obtenido')
@@ -26,6 +26,9 @@ app.get('/graphs', (req, res)=> {//get request para obtener un grafo
 })
 
 app.delete('/graphs', (req,res)=> {// delete request para borrar un grafo
+    var net = require('net')
+    var client = net.connect(1001, 'localhost');
+    client.end();
     res.send('Grafos Borrados')
     res.status(500).send()
 
